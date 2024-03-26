@@ -37,3 +37,19 @@ func (c *PayfonteInitValues) Post(endpoint string, payload interface{}) (*http.R
 	client := http.DefaultClient
 	return client.Do(req)
 }
+
+// Get sends a Get request to the specified endpoint.
+func (c *PayfonteInitValues) Get(endpoint string) (*http.Response, error) {
+	url := c.BaseURL + endpoint
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("client-id", c.ClientId)
+
+	client := http.DefaultClient
+	return client.Do(req)
+}

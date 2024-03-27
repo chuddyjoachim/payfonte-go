@@ -17,8 +17,8 @@ type NewPayfonte types.NewPayfonte
 type GenerateCheckoutPayload struct {
 	User struct {
 		Email       string `json:"email"`
-		PhoneNumber string `json:"phoneNumber"`
 		Name        string `json:"name"`
+		PhoneNumber string `json:"phoneNumber,omitempty"`
 	} `json:"user"`
 	Reference string `json:"reference"`
 	Amount    int    `json:"amount"`
@@ -43,6 +43,11 @@ type VerifyPaymentPayload struct {
 	Reference string `json:"reference"`
 }
 
+type User = struct {
+	Email       string `json:"email"`
+	Name        string `json:"name"`
+	PhoneNumber string `json:"phoneNumber,omitempty"`
+}
 type VerifyPaymentResponseData struct {
 	ClientId            string `json:"clientId"`
 	Status              string `json:"status"`
@@ -61,10 +66,7 @@ type VerifyPaymentResponseData struct {
 	Id                  string `json:"id"`
 	AmountLabel         string `json:"amountLabel"`
 	ChargeLabel         string `json:"chargeLabel"`
-	User                struct {
-		Email       string `json:"email"`
-		PhoneNumber string `json:"phoneNumber"`
-	} `json:"user"`
+	User                User   `json:"user,omitempty"`
 }
 type VerifyPaymentResponse struct {
 	Data       VerifyPaymentResponseData `json:"data"`

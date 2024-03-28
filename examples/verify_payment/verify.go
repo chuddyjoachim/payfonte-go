@@ -8,11 +8,17 @@ import (
 )
 
 func main() {
-	payload := &payfonte.NewPayfonte{ClientId: "textng", ClientSecret: "dev_1325ece6062f9c87550e89431fb8d53963e4c48c6e5fa8742a"}
+	cl := "YOUR_CLIENTID"
+	secret := "YOUR_CLIENTSECRET"
+	IsProd := false //set isProd to true when in production environment
+
+	rf := "YOUR_PAYMENT_REFERENCE"
+
+	payload := &payfonte.NewPayfonte{ClientId: cl, ClientSecret: secret, IsProd: IsProd}
 	api := payfonte.NewPayfonteApi(payload)
 
 	fmt.Println("Verifying...")
-	res, err := api.VerifyPayment(&payfonte.VerifyPaymentPayload{Reference: "D20240207174304EKWUG"})
+	res, err := api.VerifyPayment(&payfonte.VerifyPaymentPayload{Reference: rf})
 
 	if err != nil {
 		log.Fatal(err)

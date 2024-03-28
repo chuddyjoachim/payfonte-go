@@ -8,7 +8,11 @@ import (
 )
 
 func main() {
-	payload := &payfonte.NewPayfonte{ClientId: "textng", ClientSecret: "dev_1325ece6062f9c87550e89431fb8d53963e4c48c6e5fa8742a"}
+	cl := "YOUR_CLIENTID"
+	secret := "YOUR_CLIENTSECRET"
+	IsProd := false //set isProd to true when in production environment
+
+	payload := &payfonte.NewPayfonte{ClientId: cl, ClientSecret: secret, IsProd: IsProd}
 	api := payfonte.NewPayfonteApi(payload)
 
 	pl := &payfonte.GenerateCheckoutPayload{

@@ -38,7 +38,7 @@ func (c *PayfonteInitValues) Post(endpoint string, payload interface{}) (*http.R
 	return client.Do(req)
 }
 
-// Get sends a Get request to the specified endpoint.
+// Get:- sends a Get request to the specified endpoint.
 func (c *PayfonteInitValues) Get(endpoint string) (*http.Response, error) {
 	url := c.BaseURL + endpoint
 

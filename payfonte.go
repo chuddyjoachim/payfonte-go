@@ -1,4 +1,4 @@
-package main
+package payfonte
 
 import (
 	"encoding/json"
